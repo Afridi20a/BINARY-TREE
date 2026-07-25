@@ -30,6 +30,25 @@ void preOrder(struct node *root)
     }
 }
 
+// Leaf count function
+int countLeaf(struct node *root)
+{
+    // Tree empty
+    if(root == NULL)
+    {
+        return 0;
+    }
+
+    // Leaf node
+    if(root->left == NULL && root->right == NULL)
+    {
+        return 1;
+    }
+
+    // Left subtree + Right subtree
+    return countLeaf(root->left) + countLeaf(root->right);
+}
+
 //function of post order traversal
 void postOrder(struct node *root)
 {
@@ -76,5 +95,7 @@ int main()
     postOrder(p);
     printf("\nin orderd binary traversal\n");
     inOrder(p);
+    printf("\n");
+    printf("%d ",countLeaf(p));
     return 0;
 }
